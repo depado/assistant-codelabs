@@ -11,8 +11,8 @@ import (
 	"github.com/cheggaaa/pb"
 	"github.com/sirupsen/logrus"
 
-	"github.com/Depado/assistant/backend/database"
-	"github.com/Depado/assistant/backend/models"
+	"github.com/Depado/assistant-codelabs/database"
+	"github.com/Depado/assistant-codelabs/models"
 	"github.com/pkg/errors"
 )
 

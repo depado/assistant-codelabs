@@ -21,3 +21,4 @@ backend
 ansible/
 exports/
 dialogflow/dialogflow.json
+assistant-codelabs

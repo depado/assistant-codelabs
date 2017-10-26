@@ -6,8 +6,8 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/sirupsen/logrus"
 
-	"github.com/Depado/assistant/backend/dialogflow"
-	"github.com/Depado/assistant/backend/models"
+	"github.com/Depado/assistant-codelabs/dialogflow"
+	"github.com/Depado/assistant-codelabs/models"
 )
 
 // PostFulfillment is the handler handling incoming webhook requests from
@@ -30,6 +30,7 @@ func PostFulfillment(c *gin.Context) {
 		c.AbortWithStatus(http.StatusInternalServerError)
 		return
 	}
+
 	out := car.Estimate()
 	c.JSON(http.StatusOK, dialogflow.Response{
 		DisplayText: out,

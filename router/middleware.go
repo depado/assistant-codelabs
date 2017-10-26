@@ -5,7 +5,7 @@ import (
 
 	"github.com/gin-gonic/gin"
 
-	"github.com/Depado/assistant/backend/conf"
+	"github.com/Depado/assistant-codelabs/conf"
 )
 
 // AuthMiddleware checks if the Authorization header's token matches the given

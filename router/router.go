@@ -4,8 +4,8 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/sirupsen/logrus"
 
-	"github.com/Depado/assistant/backend/conf"
-	"github.com/Depado/assistant/backend/views"
+	"github.com/Depado/assistant-codelabs/conf"
+	"github.com/Depado/assistant-codelabs/views"
 )
 
 // Run is a function to run the router

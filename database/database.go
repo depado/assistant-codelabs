@@ -3,7 +3,7 @@ package database
 import (
 	"time"
 
-	"github.com/Depado/assistant/backend/conf"
+	"github.com/Depado/assistant-codelabs/conf"
 	"github.com/asdine/storm"
 	"github.com/boltdb/bolt"
 )

@@ -4,10 +4,10 @@ import (
 	flag "github.com/ogier/pflag"
 	"github.com/sirupsen/logrus"
 
-	"github.com/Depado/assistant/backend/conf"
-	"github.com/Depado/assistant/backend/database"
-	"github.com/Depado/assistant/backend/router"
-	"github.com/Depado/assistant/backend/utils"
+	"github.com/Depado/assistant-codelabs/conf"
+	"github.com/Depado/assistant-codelabs/database"
+	"github.com/Depado/assistant-codelabs/router"
+	"github.com/Depado/assistant-codelabs/utils"
 )
 
 func main() {

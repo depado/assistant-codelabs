@@ -11,7 +11,8 @@ import (
 	"github.com/pkg/errors"
 	"github.com/sirupsen/logrus"
 
-	"github.com/Depado/assistant/backend/database"
+	"github.com/Depado/assistant-codelabs/database"
+	"github.com/Depado/assistant-codelabs/dialogflow"
 )
 
 // Car is a simple struct holding car information
@@ -95,55 +96,17 @@ func NewFromCSV(line []string) (*Car, error) {
 }
 
 // NewCarFromParameters returns a new car from dialogflow's parameters
-func NewCarFromParameters(params interface{}) (*Car, error) {
-	var err error
-	var ok bool
-	var in map[string]interface{}
+func NewCarFromParameters(params dialogflow.CarSearchParameters) (*Car, error) {
 
-	c := &Car{}
+	c := &Car{
+		Brand:   params.CarBrand,
+		Model:   params.CarModel,
+		Fuel:    params.CarEnergy,
+		Gearbox: params.CarGearbox,
+		Mileage: params.CarKilometers.Amount,
+	}
+	c.RegDate, _ = strconv.Atoi(params.Year)
 
-	if in, ok = params.(map[string]interface{}); !ok {
-		return &Car{}, errors.New("NewCarFromParameters(): unable to cast")
-	}
-	for k, v := range in {
-		switch k {
-		case "car_brand":
-			if c.Brand, ok = v.(string); !ok {
-				continue
-			}
-		case "car_model":
-			if c.Model, ok = v.(string); !ok {
-				continue
-			}
-		case "car_energy":
-			if c.Fuel, ok = v.(string); !ok {
-				continue
-			}
-		case "car_gearbox":
-			if c.Gearbox, ok = v.(string); !ok {
-				continue
-			}
-		case "car_kilometers":
-			var f float64
-			if f, ok = v.(float64); !ok {
-				if s, ok := v.(string); ok {
-					if c.Mileage, err = strconv.Atoi(s); err != nil {
-						continue
-					}
-				}
-			} else {
-				c.Mileage = int(f)
-			}
-		case "date-period", "year":
-			var d string
-			if d, ok = v.(string); !ok {
-				continue
-			}
-			c.RegDate, _ = strconv.Atoi(d)
-		default:
-			logrus.WithFields(logrus.Fields{"key": k, "value": v}).Warn("Got unknown parameter")
-		}
-	}
 	return c, nil
 }
 

@@ -8,9 +8,9 @@ import (
 	"github.com/pkg/errors"
 	"github.com/sirupsen/logrus"
 
-	"github.com/Depado/assistant/backend/database"
-	"github.com/Depado/assistant/backend/dialogflow"
-	"github.com/Depado/assistant/backend/models"
+	"github.com/Depado/assistant-codelabs/database"
+	"github.com/Depado/assistant-codelabs/dialogflow"
+	"github.com/Depado/assistant-codelabs/models"
 )
 
 // ExportAll will export some fields to JSON files in the dialogflow entity

@@ -19,18 +19,37 @@ type Status struct {
 	Code      int    `json:"code"`
 }
 
+// CarSearchParameters is a struct that is sent from DF to the webhook
+type CarSearchParameters struct {
+	CarGearboxOriginal string `json:"car_gearbox.original"`
+	CarModelOriginal   string `json:"car_model.original"`
+	CarModel           string `json:"car_model"`
+	CarEnergy          string `json:"car_energy"`
+	CarGearbox         string `json:"car_gearbox"`
+	Year               string `json:"year"`
+	CarKilometers      struct {
+		Amount int    `json:"amount"`
+		Unit   string `json:"unit"`
+	} `json:"car_kilometers"`
+	CarKilometersOriginal string `json:"car_kilometers.original"`
+	CarEnergyOriginal     string `json:"car_energy.original"`
+	CarBrand              string `json:"car_brand"`
+	YearOriginal          string `json:"year.original"`
+	CarBrandOriginal      string `json:"car_brand.original"`
+}
+
 // Result is the result of the request
 type Result struct {
-	Parameters       interface{}   `json:"parameters"`
-	Contexts         []interface{} `json:"contexts"`
-	ResolvedQuery    string        `json:"resolvedQuery"`
-	Source           string        `json:"source"`
-	Score            float64       `json:"score"`
-	Speech           string        `json:"speech"`
-	Fulfillment      Fulfillment   `json:"fulfillment"`
-	ActionIncomplete bool          `json:"actionIncomplete"`
-	Action           string        `json:"action"`
-	Metadata         Metadata      `json:"metadata"`
+	Parameters       CarSearchParameters `json:"parameters"`
+	Contexts         []interface{}       `json:"contexts"`
+	ResolvedQuery    string              `json:"resolvedQuery"`
+	Source           string              `json:"source"`
+	Score            float64             `json:"score"`
+	Speech           string              `json:"speech"`
+	Fulfillment      Fulfillment         `json:"fulfillment"`
+	ActionIncomplete bool                `json:"actionIncomplete"`
+	Action           string              `json:"action"`
+	Metadata         Metadata            `json:"metadata"`
 }
 
 type Fulfillment struct {
